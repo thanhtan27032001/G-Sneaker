@@ -5,6 +5,7 @@ class AppTextStyle {
   static const double fontSizeHeading1 = 32;
   static const double fontSizeHeading2 = 28;
   static const double fontSizeHeading3 = 24;
+  static const double fontSizeHeading4 = 20;
   static const double fontSizeBody1 = 16;
   static const double fontSizeBody2 = 14;
   static const double fontSizeBody3 = 12;

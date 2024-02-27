@@ -12,15 +12,19 @@ class MainPage extends GetView<MainController> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        ProductView(),
-        const SizedBox(
-          width: 50,
+    return Scaffold(
+      body: Center(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ProductView(),
+            const SizedBox(
+              width: 50,
+            ),
+            const CartView(),
+          ],
         ),
-        const CartView(),
-      ],
+      ),
     );
   }
 }

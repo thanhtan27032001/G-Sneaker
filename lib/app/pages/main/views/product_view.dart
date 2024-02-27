@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:gsneaker/app/components/shoe_item.dart';
+import 'package:gsneaker/app/components/product_item.dart';
 import 'package:gsneaker/app/configs/app_colors.dart';
 import 'package:gsneaker/app/configs/app_text_style.dart';
 import 'package:gsneaker/app/pages/main/main_controller.dart';
@@ -44,7 +44,7 @@ class ProductView extends GetView<MainController> {
             child: Text(
               "Out products",
               style: TextStyle(
-                  // fontFamily: "Rubik",
+                  fontFamily: "Rubik",
                   fontSize: AppTextStyle.fontSizeHeading3,
                   fontWeight: FontWeight.bold,
                   color: AppColors.blackColor()),
@@ -53,7 +53,7 @@ class ProductView extends GetView<MainController> {
           Expanded(
             child: ListView.builder(
               itemBuilder: (context, index) {
-                return ShoeItem(
+                return ProductItem(
                   shoe: Shoe(
                       name: "Nike Air Zoom Pegasus 36",
                       description:

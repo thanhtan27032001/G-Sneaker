@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class Shoe {
   int? id;
   String? image;
@@ -8,11 +10,15 @@ class Shoe {
 
   Shoe(
       {this.id,
-        this.image,
-        this.name,
-        this.description,
-        this.price,
-        this.color});
+      this.image,
+      this.name,
+      this.description,
+      this.price,
+      this.color});
+
+  Color getShoeColor() {
+    return Color(int.parse("0xff${color?.replaceAll("#", "")}"));
+  }
 
   Shoe.fromJson(Map<String, dynamic> json) {
     id = json['id'];
