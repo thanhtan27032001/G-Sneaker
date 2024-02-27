@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:gsneaker/app/components/text/app_text.dart';
 import 'package:gsneaker/app/configs/app_colors.dart';
 import 'package:gsneaker/app/configs/app_text_style.dart';
 import 'package:gsneaker/domain/shoe.dart';
@@ -31,6 +32,7 @@ class ShoeItem extends StatelessWidget {
             child: Text(
               shoe.name ?? "",
               style: TextStyle(
+                  fontFamily: "Rubik",
                   fontWeight: FontWeight.bold,
                   fontSize: AppTextStyle.fontSizeHeading3,
                   color: AppColors.blackColor()),
@@ -38,6 +40,7 @@ class ShoeItem extends StatelessWidget {
         Text(
           shoe.description ?? "",
           style: TextStyle(
+              fontFamily: "Rubik",
               fontSize: AppTextStyle.fontSizeBody2,
               height: 1.5,
               color: AppColors.grayColor()),
@@ -49,6 +52,7 @@ class ShoeItem extends StatelessWidget {
               Text(
                 "\$ ${shoe.price ?? "Not found"}",
                 style: TextStyle(
+                    fontFamily: "Rubik",
                     fontWeight: FontWeight.bold,
                     fontSize: AppTextStyle.fontSizeBody1,
                     color: AppColors.blackColor()),
@@ -57,13 +61,13 @@ class ShoeItem extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.yellowColor()
-                ),
+                    backgroundColor: AppColors.yellowColor()),
                 child: Container(
                   padding: const EdgeInsets.symmetric(vertical: 12),
                   child: Text(
                     "ADD TO CART",
                     style: TextStyle(
+                        fontFamily: "Rubik",
                         fontWeight: FontWeight.bold,
                         fontSize: AppTextStyle.fontSizeBody2,
                         color: AppColors.blackColor()),
