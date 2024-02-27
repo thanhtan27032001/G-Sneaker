@@ -93,5 +93,7 @@ flutter:
   fonts:
    - family: Rubik
      fonts:
-      - asset: lib/fonts/rubik-regular.ttf
-      - asset: lib/fonts/rubik-bold.ttf
+      - asset: fonts/rubik-regular.ttf
+      - asset: fonts/rubik-bold.ttf
+  assets:
+   - assets/nike.png

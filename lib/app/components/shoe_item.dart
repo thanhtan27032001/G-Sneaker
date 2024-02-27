@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:gsneaker/app/components/text/app_text.dart';
 import 'package:gsneaker/app/configs/app_colors.dart';
 import 'package:gsneaker/app/configs/app_text_style.dart';
 import 'package:gsneaker/domain/shoe.dart';
