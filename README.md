@@ -1,4 +1,4 @@
-# gsneaker
+# G-Sneaker
 
 A simple shopping cart.
 
