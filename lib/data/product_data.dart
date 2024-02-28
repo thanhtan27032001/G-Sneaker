@@ -23,7 +23,7 @@ class ProductData {
     for(var shoeData in listData) {
       shoeList.add(Shoe.fromJson(shoeData));
     }
-    print(listData);
+    // print(listData);
 
     return shoeList;
   }

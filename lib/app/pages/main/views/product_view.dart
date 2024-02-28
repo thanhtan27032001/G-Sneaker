@@ -56,6 +56,9 @@ class ProductView extends GetView<MainController> {
                   itemBuilder: (context, index) {
                     return ProductItem(
                       shoe: controller.shoeProductList.value![index],
+                      onCLickAddToCartButton: () {
+                        controller.addShoeToCart(controller.shoeProductList.value![index]);
+                      },
                     );
                   },
                   itemCount: controller.shoeProductList.value?.length,

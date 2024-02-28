@@ -71,7 +71,7 @@ class CartView extends GetView {
                 return ListView.builder(
                   itemBuilder: (context, index) {
                     return CartItem(
-                      shoe: controller.getShoeById(controller.shoeCartList.value![index].id)!,
+                      shoe: controller.getShoeById(controller.shoeCartList.value![index].shoeId)!,
                     );
                   },
                   itemCount: controller.shoeCartList.value?.length,

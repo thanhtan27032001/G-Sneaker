@@ -7,8 +7,9 @@ import 'package:gsneaker/domain/shoe.dart';
 
 class ProductItem extends StatelessWidget {
   final Shoe shoe;
+  final Function() onCLickAddToCartButton;
 
-  const ProductItem({super.key, required this.shoe});
+  const ProductItem({super.key, required this.shoe, required this.onCLickAddToCartButton});
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +60,7 @@ class ProductItem extends StatelessWidget {
               ),
               const Spacer(),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: onCLickAddToCartButton,
                 style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.yellowColor()),
                 child: Container(

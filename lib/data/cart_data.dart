@@ -25,7 +25,7 @@ class CartData {
 
   Future<void> updateShoeInCart(CartItem cartItem) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setInt(cartItem.id.toString(), cartItem.amount);
+    prefs.setInt(cartItem.shoeId.toString(), cartItem.amount);
   }
 
 }
