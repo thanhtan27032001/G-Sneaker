@@ -41,7 +41,7 @@ class ProductView extends GetView<MainController> {
           Container(
             margin: const EdgeInsets.only(bottom: 16),
             child: Text(
-              "Out products",
+              "Our products",
               style: TextStyle(
                   fontFamily: "Rubik",
                   fontSize: AppTextStyle.fontSizeHeading3,
