@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:gsneaker/data/cart_data_2.dart';
+import 'package:gsneaker/data/cart_data_firebase.dart';
 import 'package:gsneaker/data/product_data.dart';
 import 'package:gsneaker/domain/cart_item_data.dart';
 import 'package:gsneaker/domain/shoe.dart';
