@@ -51,23 +51,19 @@ class ProductView extends GetView<MainController> {
             ),
           ),
           Expanded(
-            child: ListView.builder(
-              itemBuilder: (context, index) {
-                return ProductItem(
-                  shoe: Shoe(
-                      name: "Nike Air Zoom Pegasus 36",
-                      description:
-                      "The iconic Nike Air Zoom Pegasus 36 offers more cooling "
-                          "and mesh that targets breathability across high-heat areas. "
-                          "A slimmer heel collar and tongue reduce bulk, "
-                          "while exposed cables give you a snug fit at higher speeds.",
-                      image:
-                      "https://s3-us-west-2.amazonaws.com/s.cdpn.io/1315882/air-zoom-pegasus-36-mens-running-shoe-wide-D24Mcz-removebg-preview.png",
-                      color: "#e1e7ed"),
+            child: Obx(() {
+              if (controller.shoeProductList.value != null) {
+                return ListView.builder(
+                  itemBuilder: (context, index) {
+                    return ProductItem(
+                      shoe: controller.shoeProductList.value![index],
+                    );
+                  },
+                  itemCount: controller.shoeProductList.value?.length,
                 );
-              },
-              itemCount: 10,
-            ),
+              }
+              return const Text("No item");
+            }),
           ),
         ],
       ),
