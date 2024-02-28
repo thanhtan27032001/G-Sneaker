@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:gsneaker/data/shoe_data.dart';
 import 'package:gsneaker/domain/shoe.dart';
 
 class MainController extends GetxController {
@@ -28,6 +29,8 @@ class MainController extends GetxController {
             color: "#e1e7ed"),
       );
     }
+
+    ShoeData.instance().readShoeList();
   }
 
   void getAllCartItem() {

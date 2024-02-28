@@ -4,7 +4,6 @@ import 'package:gsneaker/app/components/product_item.dart';
 import 'package:gsneaker/app/configs/app_colors.dart';
 import 'package:gsneaker/app/configs/app_text_style.dart';
 import 'package:gsneaker/app/pages/main/main_controller.dart';
-import 'package:gsneaker/domain/shoe.dart';
 
 class ProductView extends GetView<MainController> {
   ProductView({super.key});
@@ -35,7 +34,7 @@ class ProductView extends GetView<MainController> {
           Container(
               margin: const EdgeInsets.only(top: 16, bottom: 8),
               child: Image.asset(
-                "nike.png",
+                "/images/nike.png",
                 height: 28,
                 fit: BoxFit.fitWidth,
               )),

@@ -31,7 +31,7 @@ class CartView extends GetView {
           Container(
               margin: const EdgeInsets.only(top: 16, bottom: 8),
               child: Image.asset(
-                "nike.png",
+                "/images/nike.png",
                 height: 28,
                 fit: BoxFit.fitWidth,
               )),

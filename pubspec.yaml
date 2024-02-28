@@ -96,4 +96,5 @@ flutter:
       - asset: fonts/rubik-regular.ttf
       - asset: fonts/rubik-bold.ttf
   assets:
-   - assets/nike.png
+   - assets/images/
+   - assets/data/
