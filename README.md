@@ -17,3 +17,9 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Demo
 https://www.youtube.com/watch?v=15yZk5bi5xo&list=PLYbxHMjPMXcxvAE8eqonfnZatxyV1f6la&index=5
+
+## Guide to run
+**Step 1:** Download repo by using the link below:
+```
+https://github.com/j1mmyto9/flutter-demo-gsneaker.git](https://github.com/thanhtan27032001/G-Sneaker)https://github.com/thanhtan27032001/G-Sneaker
+```
