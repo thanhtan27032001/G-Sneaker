@@ -36,7 +36,7 @@ class MainController extends GetxController {
   Future<void> addShoeToCart(Shoe shoe) async {
     CartItemData cartItem = CartItemData(shoe.id!, 1);
     try {
-      await CartDataFirebase.instance().addShoeToCart(cartItem);
+      cartItem.id = await CartDataFirebase.instance().addShoeToCart(cartItem);
       shoeCartList.value?.add(cartItem);
       shoeCartList.refresh();
       shoeProductList.value?.firstWhere((element) => element.id == shoe.id).isInCart = true;
@@ -98,7 +98,7 @@ class MainController extends GetxController {
   void sumCartTotalPrice() {
     double sum = 0.0;
     for (var item in shoeCartList.value!) {
-      sum += searchShoeById(item.shoeId)!.price!;
+      sum += searchShoeById(item.shoeId)!.price!*item.amount;
     }
     cartTotalPrice.value = sum;
   }

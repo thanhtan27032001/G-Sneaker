@@ -29,13 +29,15 @@ class CartDataFirebase {
   Future<String> addShoeToCart(CartItemData cartItem) async {
     var docRef = await dbRef.add({
       "shoeId": cartItem.shoeId,
-      "amount": cartItem.amount
+      "amount": cartItem.amount,
     });
     return docRef.id;
   }
 
   Future<void> updateShoeInCart(CartItemData cartItem) async {
-    await dbRef.doc("${cartItem.id}").set({"amount": cartItem.amount});
+    await dbRef.doc("${cartItem.id}").update({
+      "amount": cartItem.amount,
+    });
   }
 
   Future<void> removeShoeFromCart(CartItemData cartItem) async {

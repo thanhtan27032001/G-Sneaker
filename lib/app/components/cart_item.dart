@@ -67,7 +67,7 @@ class CartItem extends StatelessWidget {
               Container(
                 margin: const EdgeInsets.only(top: 4),
                 child: Text(
-                  "\$ ${shoe.price ?? "Not found"}",
+                  "\$ ${(shoe.price!*cartItem.amount).toStringAsFixed(2)}",
                   style: TextStyle(
                       fontFamily: "Rubik",
                       fontWeight: FontWeight.bold,
