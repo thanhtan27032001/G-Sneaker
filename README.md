@@ -25,6 +25,7 @@ $ flutter run -d edge
 ```
 ## More info
 Framework: Flutter - version 3.13.0  
-Language: Dart.
-Platform: Web.
-State management: GetX - version 4.6.6.
+Language: Dart  
+Platform: Web  
+State management: GetX - version 4.6.6  
+IDE: Android Studio Hedgehog | 2023.1.1  
