@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:gsneaker/app/configs/app_colors.dart';
 import 'package:gsneaker/app/configs/app_text_style.dart';
 import 'package:gsneaker/domain/cart_item_data.dart';
@@ -48,10 +49,13 @@ class CartItem extends StatelessWidget {
                   child: Image.network(
                     shoe.image ?? "",
                     width: 120,
+                    height: 120,
+                    fit: BoxFit.fitWidth,
                   )),
             )
           ],
         ),
+        const SizedBox(width: 8,),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -67,7 +71,7 @@ class CartItem extends StatelessWidget {
               Container(
                 margin: const EdgeInsets.only(top: 4),
                 child: Text(
-                  "\$ ${(shoe.price!*cartItem.amount).toStringAsFixed(2)}",
+                  "\$ ${(shoe.price! * cartItem.amount).toStringAsFixed(2)}",
                   style: TextStyle(
                       fontFamily: "Rubik",
                       fontWeight: FontWeight.bold,
@@ -77,26 +81,53 @@ class CartItem extends StatelessWidget {
               ),
               Row(
                 children: [
-                  IconButton(
-                    onPressed: onMinusItemButtonClick,
-                    icon: const Icon(Icons.remove_circle_outline_rounded),
+                  ClipOval(
+                    child: Material(
+                      color: Colors.black12,
+                      child: InkWell(
+                        onTap: onMinusItemButtonClick,
+                        child: const Padding(
+                          padding: EdgeInsets.all(4.0),
+                          child: Icon(Icons.remove, size: 16),
+                        ),
+                      ),
+                    ),
                   ),
-                  Text(
-                    cartItem.amount.toString(),
-                    style: TextStyle(
-                        fontFamily: "Rubik",
-                        fontWeight: FontWeight.bold,
-                        fontSize: AppTextStyle.fontSizeBody2,
-                        color: AppColors.blackColor()),
+                  Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Text(
+                      cartItem.amount.toString(),
+                      style: TextStyle(
+                          fontFamily: "Rubik",
+                          fontWeight: FontWeight.normal,
+                          fontSize: AppTextStyle.fontSizeBody2,
+                          color: AppColors.blackColor()),
+                    ),
                   ),
-                  IconButton(
-                    onPressed: onAddItemButtonClick,
-                    icon: const Icon(Icons.add_circle_outline_rounded),
+                  ClipOval(
+                    child: Material(
+                      color: Colors.black12,
+                      child: InkWell(
+                        onTap: onAddItemButtonClick,
+                        child: const Padding(
+                          padding: EdgeInsets.all(4.0),
+                          child: Icon(Icons.add, size: 16),
+                        ),
+                      ),
+                    ),
                   ),
                   const Spacer(),
-                  IconButton(
-                    onPressed: onRemoveItemButtonClick,
-                    icon: const Icon(Icons.delete),
+                  ClipOval(
+                    child: Material(
+                      color: AppColors.yellowColor(),
+                      child: InkWell(
+                        onTap: onRemoveItemButtonClick,
+                        child: Padding(
+                          padding: const EdgeInsets.all(4.0),
+                          child: Image.asset("images/trash.png", width: 16,),
+                        ),
+                      ),
+                    ),
                   ),
                 ],
               )
