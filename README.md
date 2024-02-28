@@ -3,7 +3,7 @@
 A simple shopping cart.
 
 ## Demo
-https://www.youtube.com/watch?v=15yZk5bi5xo&list=PLYbxHMjPMXcxvAE8eqonfnZatxyV1f6la&index=5
+https://youtu.be/nfglTjh_-zk
 
 ## Guide to run
 **Step 1:** Download repo by using the link below:
