@@ -1,4 +1,4 @@
-import 'package:gsneaker/domain/cart_item.dart';
+import 'package:gsneaker/domain/cart_item_data.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CartData {
@@ -10,20 +10,20 @@ class CartData {
 
   CartData._();
 
-  Future<List<CartItem>> getAllShoeInCart() async {
-    List<CartItem> cartShoeList = [];
+  Future<List<CartItemData>> getAllShoeInCart() async {
+    List<CartItemData> cartShoeList = [];
 
     SharedPreferences prefs = await SharedPreferences.getInstance();
     Set<String> allAddedShoeId = prefs.getKeys();
 
     for (var shoeId in allAddedShoeId) {
-      cartShoeList.add(CartItem(int.parse(shoeId), prefs.getInt(shoeId) ?? 0));
+      cartShoeList.add(CartItemData(int.parse(shoeId), prefs.getInt(shoeId) ?? 0));
     }
 
     return cartShoeList;
   }
 
-  Future<void> updateShoeInCart(CartItem cartItem) async {
+  Future<void> updateShoeInCart(CartItemData cartItem) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setInt(cartItem.shoeId.toString(), cartItem.amount);
   }

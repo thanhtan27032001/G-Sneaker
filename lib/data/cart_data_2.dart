@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
-import 'package:gsneaker/domain/cart_item.dart';
+import 'package:gsneaker/domain/cart_item_data.dart';
 
 class CartDataFirebase {
   static final CartDataFirebase _instance = CartDataFirebase();
@@ -10,12 +10,12 @@ class CartDataFirebase {
     return _instance;
   }
 
-  Future<List<CartItem>> getAllShoeInCart() async {
-    final List<CartItem> result = [];
+  Future<List<CartItemData>> getAllShoeInCart() async {
+    final List<CartItemData> result = [];
     await dbRef.get().then(
       (value) async {
         for (var doc in value.docs) {
-          var cartItem = CartItem(doc["shoeId"], doc["amount"]);
+          var cartItem = CartItemData(doc["shoeId"], doc["amount"]);
           cartItem.id = doc.id;
           result.add(cartItem);
         }
@@ -26,7 +26,7 @@ class CartDataFirebase {
     return result;
   }
 
-  Future<String> addShoeToCart(CartItem cartItem) async {
+  Future<String> addShoeToCart(CartItemData cartItem) async {
     var docRef = await dbRef.add({
       "shoeId": cartItem.shoeId,
       "amount": cartItem.amount
@@ -34,11 +34,11 @@ class CartDataFirebase {
     return docRef.id;
   }
 
-  Future<void> updateShoeInCart(CartItem cartItem) async {
-    await dbRef.doc("userCart/${cartItem.id}").set({"amount": cartItem.amount});
+  Future<void> updateShoeInCart(CartItemData cartItem) async {
+    await dbRef.doc("${cartItem.id}").set({"amount": cartItem.amount});
   }
 
-  Future<void> removeShoeFromCart(CartItem cartItem) async {
-    await dbRef.doc("userCart/${cartItem.id}").delete();
+  Future<void> removeShoeFromCart(CartItemData cartItem) async {
+    await dbRef.doc("${cartItem.id}").delete();
   }
 }

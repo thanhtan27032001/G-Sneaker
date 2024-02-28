@@ -4,6 +4,7 @@ import 'package:gsneaker/app/components/cart_item.dart';
 import 'package:gsneaker/app/configs/app_colors.dart';
 import 'package:gsneaker/app/configs/app_text_style.dart';
 import 'package:gsneaker/app/pages/main/main_controller.dart';
+import 'package:gsneaker/domain/cart_item_data.dart';
 
 class CartView extends GetView {
   CartView({super.key});
@@ -72,8 +73,13 @@ class CartView extends GetView {
               else {
                 return ListView.builder(
                   itemBuilder: (context, index) {
+                    CartItemData cartItemData = controller.shoeCartList.value![index];
                     return CartItem(
                       shoe: controller.searchShoeById(controller.shoeCartList.value![index].shoeId)!,
+                      cartItem: cartItemData,
+                      onRemoveItemButtonClick: () => controller.removeShoeFromCart(cartItemData),
+                      onAddItemButtonClick: () => controller.addShoeInCart(cartItemData),
+                      onMinusItemButtonClick: () => controller.minusShoeInCart(cartItemData),
                     );
                   },
                   itemCount: controller.shoeCartList.value?.length,

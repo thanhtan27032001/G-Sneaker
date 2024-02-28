@@ -1,9 +1,9 @@
 import 'dart:core';
 
-class CartItem {
+class CartItemData {
   String? id;
   int shoeId;
   int amount;
 
-  CartItem(this.shoeId, this.amount);
+  CartItemData(this.shoeId, this.amount);
 }

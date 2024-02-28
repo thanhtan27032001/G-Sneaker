@@ -1,12 +1,12 @@
 import 'package:get/get.dart';
 import 'package:gsneaker/data/cart_data_2.dart';
 import 'package:gsneaker/data/product_data.dart';
-import 'package:gsneaker/domain/cart_item.dart';
+import 'package:gsneaker/domain/cart_item_data.dart';
 import 'package:gsneaker/domain/shoe.dart';
 
 class MainController extends GetxController {
   Rxn<List<Shoe>> shoeProductList = Rxn();
-  Rxn<List<CartItem>> shoeCartList = Rxn();
+  Rxn<List<CartItemData>> shoeCartList = Rxn();
   RxDouble cartTotalPrice = 0.0.obs;
 
   @override
@@ -21,7 +21,6 @@ class MainController extends GetxController {
   }
 
   Future<void> getAllCartItem() async {
-    // shoeCartList.value = await CartData.instance().getAllShoeInCart();
     shoeCartList.value = await CartDataFirebase.instance().getAllShoeInCart();
     for(var item in shoeCartList.value!) {
       shoeProductList.value!.firstWhere((element) => element.id == item.shoeId).isInCart = true;
@@ -35,17 +34,7 @@ class MainController extends GetxController {
   }
 
   Future<void> addShoeToCart(Shoe shoe) async {
-    CartItem cartItem = CartItem(shoe.id!, 1);
-    // try {
-    //   CartData.instance().updateShoeInCart(cartItem);
-    //   shoeCartList.value?.add(cartItem);
-    //   shoeCartList.refresh();
-    // }
-    // catch(e) {
-    //   print("Add shoe to cart failed");
-    //   e.printError();
-    // }
-
+    CartItemData cartItem = CartItemData(shoe.id!, 1);
     try {
       await CartDataFirebase.instance().addShoeToCart(cartItem);
       shoeCartList.value?.add(cartItem);
@@ -58,19 +47,52 @@ class MainController extends GetxController {
       print("Add shoe to cart failed");
       e.printError();
     }
-
-    // if (cartItem.amount > 1) {
-    //   CartDataFirebase.instance().updateShoeInCart(cartItem);
-    // }
-    // else {
-    //   cartItem.id = await CartDataFirebase.instance().addShoeToCart(cartItem);
-    //   shoeCartList.value?.add(cartItem);
-    //   shoeCartList.refresh();
-    // }
   }
 
-  updateCartStatus(){
+  Future<void> removeShoeFromCart(CartItemData cartItem) async {
+    try {
+      await CartDataFirebase.instance().removeShoeFromCart(cartItem);
+      shoeCartList.value?.remove(cartItem);
+      shoeCartList.refresh();
+      shoeProductList.value?.firstWhere((element) => element.id == cartItem.shoeId).isInCart = false;
+      shoeProductList.refresh();
+      sumCartTotalPrice();
+    }
+    catch(e) {
+      print("Remove shoe from cart failed");
+      e.printError();
+    }
+  }
 
+  Future<void> addShoeInCart(CartItemData cartItem) async {
+    try {
+      cartItem.amount += 1;
+      await CartDataFirebase.instance().updateShoeInCart(cartItem);
+      shoeCartList.refresh();
+      sumCartTotalPrice();
+    }
+    catch(e) {
+      print("Remove shoe from cart failed");
+      e.printError();
+    }
+  }
+
+  Future<void> minusShoeInCart(CartItemData cartItem) async {
+    try {
+      cartItem.amount -= 1;
+      if (cartItem.amount > 0) {
+        await CartDataFirebase.instance().updateShoeInCart(cartItem);
+        shoeCartList.refresh();
+        sumCartTotalPrice();
+      }
+      else {
+        removeShoeFromCart(cartItem);
+      }
+    }
+    catch(e) {
+      print("Remove shoe from cart failed");
+      e.printError();
+    }
   }
 
   void sumCartTotalPrice() {
