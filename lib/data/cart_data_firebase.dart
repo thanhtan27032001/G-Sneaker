@@ -3,12 +3,14 @@ import 'package:get/get.dart';
 import 'package:gsneaker/domain/cart_item_data.dart';
 
 class CartDataFirebase {
-  static final CartDataFirebase _instance = CartDataFirebase();
+  static final CartDataFirebase _instance = CartDataFirebase._();
   static final dbRef = FirebaseFirestore.instance.collection("userCart");
 
   static CartDataFirebase instance() {
     return _instance;
   }
+
+  CartDataFirebase._();
 
   Future<List<CartItemData>> getAllShoeInCart() async {
     final List<CartItemData> result = [];
