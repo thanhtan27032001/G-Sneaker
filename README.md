@@ -14,7 +14,7 @@ https://github.com/thanhtan27032001/G-Sneaker
 ```
 $ flutter pub get
 ```
-**Step 3:** Select device (web browser) and click Run button or run:
+**Step 3:** Select device (web browser) and click Run button or run:  
 With Chrome browser:
 ```
 $ flutter run -d chrome
