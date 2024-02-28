@@ -76,7 +76,15 @@ class ProductItem extends StatelessWidget {
                                 color: AppColors.blackColor()),
                           )),
                     )
-                  : const Icon(Icons.check_circle_rounded),
+                  : ClipOval(
+                      child: Material(
+                        color: AppColors.yellowColor(),
+                        child: Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: Image.asset("images/check.png", width: 20,),
+                        ),
+                      ),
+                    ),
             ],
           ),
         )

@@ -1,6 +1,5 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:gsneaker/app/configs/app_colors.dart';
 import 'package:gsneaker/app/configs/app_text_style.dart';
 import 'package:gsneaker/domain/cart_item_data.dart';
@@ -69,7 +68,7 @@ class CartItem extends StatelessWidget {
                     color: AppColors.blackColor()),
               ),
               Container(
-                margin: const EdgeInsets.only(top: 4),
+                margin: const EdgeInsets.symmetric(vertical: 4),
                 child: Text(
                   "\$ ${(shoe.price! * cartItem.amount).toStringAsFixed(2)}",
                   style: TextStyle(
@@ -123,7 +122,7 @@ class CartItem extends StatelessWidget {
                       child: InkWell(
                         onTap: onRemoveItemButtonClick,
                         child: Padding(
-                          padding: const EdgeInsets.all(4.0),
+                          padding: const EdgeInsets.all(6.0),
                           child: Image.asset("images/trash.png", width: 16,),
                         ),
                       ),
