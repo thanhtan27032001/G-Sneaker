@@ -51,14 +51,16 @@ class CartView extends GetView {
                       color: AppColors.blackColor()),
                 ),
                 const Spacer(),
-                Text(
-                  "\$0.00",
-                  style: TextStyle(
-                      fontFamily: "Rubik",
-                      fontSize: AppTextStyle.fontSizeHeading3,
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.blackColor()),
-                ),
+                Obx(() {
+                  return Text(
+                    "\$${controller.cartTotalPrice.toStringAsFixed(2)}",
+                    style: TextStyle(
+                        fontFamily: "Rubik",
+                        fontSize: AppTextStyle.fontSizeHeading3,
+                        fontWeight: FontWeight.bold,
+                        color: AppColors.blackColor()),
+                  );
+                }),
               ],
             ),
           ),
@@ -71,7 +73,7 @@ class CartView extends GetView {
                 return ListView.builder(
                   itemBuilder: (context, index) {
                     return CartItem(
-                      shoe: controller.getShoeById(controller.shoeCartList.value![index].shoeId)!,
+                      shoe: controller.searchShoeById(controller.shoeCartList.value![index].shoeId)!,
                     );
                   },
                   itemCount: controller.shoeCartList.value?.length,

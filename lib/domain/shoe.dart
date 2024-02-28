@@ -7,6 +7,7 @@ class Shoe {
   String? description;
   double? price;
   String? color;
+  bool? isInCart;
 
   Shoe(
       {this.id,
@@ -14,7 +15,8 @@ class Shoe {
       this.name,
       this.description,
       this.price,
-      this.color});
+      this.color,
+      this.isInCart});
 
   Color getShoeColor() {
     return Color(int.parse("0xff${color?.replaceAll("#", "")}"));
@@ -27,6 +29,7 @@ class Shoe {
     description = json['description'];
     price = json['price'];
     color = json['color'];
+    isInCart = false;
   }
 
   Map<String, dynamic> toJson() {

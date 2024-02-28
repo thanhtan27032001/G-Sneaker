@@ -9,7 +9,8 @@ class ProductItem extends StatelessWidget {
   final Shoe shoe;
   final Function() onCLickAddToCartButton;
 
-  const ProductItem({super.key, required this.shoe, required this.onCLickAddToCartButton});
+  const ProductItem(
+      {super.key, required this.shoe, required this.onCLickAddToCartButton});
 
   @override
   Widget build(BuildContext context) {
@@ -59,22 +60,23 @@ class ProductItem extends StatelessWidget {
                     color: AppColors.blackColor()),
               ),
               const Spacer(),
-              ElevatedButton(
-                onPressed: onCLickAddToCartButton,
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.yellowColor()),
-                child: Container(
-                  padding: const EdgeInsets.symmetric(vertical: 12),
-                  child: Text(
-                    "ADD TO CART",
-                    style: TextStyle(
-                        fontFamily: "Rubik",
-                        fontWeight: FontWeight.bold,
-                        fontSize: AppTextStyle.fontSizeBody2,
-                        color: AppColors.blackColor()),
-                  ),
-                ),
-              )
+              shoe.isInCart == false
+                  ? ElevatedButton(
+                      onPressed: onCLickAddToCartButton,
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: AppColors.yellowColor()),
+                      child: Container(
+                          padding: const EdgeInsets.symmetric(vertical: 12),
+                          child: Text(
+                            "ADD TO CART",
+                            style: TextStyle(
+                                fontFamily: "Rubik",
+                                fontWeight: FontWeight.bold,
+                                fontSize: AppTextStyle.fontSizeBody2,
+                                color: AppColors.blackColor()),
+                          )),
+                    )
+                  : const Icon(Icons.check_circle_rounded),
             ],
           ),
         )
