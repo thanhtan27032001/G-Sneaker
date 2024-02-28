@@ -21,7 +21,7 @@ class MainPage extends GetView<MainController> {
             const SizedBox(
               width: 50,
             ),
-            const CartView(),
+            CartView(),
           ],
         ),
       ),
